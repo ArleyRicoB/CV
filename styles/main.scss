@@ -1,0 +1,33 @@
+.main-page {
+  .content {
+    border-top: 4px solid #d3d3d3;
+  }
+
+  .skills-and-info {
+    border-right: 4px solid #d3d3d3;
+  }
+
+  .profile {
+    .profile-item {
+      margin: 40px 40px 0;
+      padding-bottom: 40px;
+      border-bottom: 4px solid #d3d3d3;
+    }
+  }
+
+  h3 {
+    position: relative;
+    margin-bottom: 32px;
+
+    &::after {
+      background-color: #000;
+      border-radius: 8px;
+      content: "";
+      height: 6px;
+      position: absolute;
+      width: 40px;
+      left: 0;
+      top: 50px;
+    }
+  }
+}
