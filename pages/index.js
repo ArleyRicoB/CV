@@ -4,15 +4,15 @@ import Print from "../components/print";
 
 const Main = ({ _content }) => {
   return (
-    <div className="container">
-      <section className="main-page">
+    <div>
+      <section id="content" className="main-page container">
         <div className="header">
           <h1>Arley Sneyder Rico Bohórquez</h1>
           <h6>Software Developer</h6>
         </div>
 
         <div className="row content">
-          <div className="col-12 col-sm-3 skills-and-info">
+          <div className="col-sm-3 skills-and-info">
             <div>
               <h3>Info</h3>
             </div>
@@ -24,7 +24,7 @@ const Main = ({ _content }) => {
             </div>
           </div>
 
-          <div className="col-12 col-sm-9 profile">
+          <div className="col-sm-9 profile">
             <div className="profile-item">
               <h3>Profile</h3>
             </div>
@@ -40,11 +40,6 @@ const Main = ({ _content }) => {
 
       <section>
         <Print id="content" />
-        <div className="d-none">
-          <div id="content">
-            <h1>Content to print</h1>
-          </div>
-        </div>
       </section>
     </div>
   );
