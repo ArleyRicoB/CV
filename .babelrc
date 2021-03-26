@@ -1,0 +1,15 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "next/babel"
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime", {
+        "regenerator": true
+      },
+      "babel-plugin-dynamic-import-node"
+    ]
+  ]
+}
