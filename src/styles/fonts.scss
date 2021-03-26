@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Arvo-Regular';
+  font-style: 'normal';
+  font-weight: 500;
+  src: url('/fonts/Arvo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Arvo-Bold';
+  font-style: 'normal';
+  font-weight: 700;
+  src: url('/fonts/Arvo-Bold.ttf') format('truetype');
+}
+
+h1 {
+  font-family: 'Arvo-Regular';
+}
+
+h3 {
+  font-family: 'Arvo-Regular';
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 54px;
+}

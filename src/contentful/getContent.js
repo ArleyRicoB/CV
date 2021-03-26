@@ -1,4 +1,4 @@
-import { createClient } from "contentful";
+import { createClient } from 'contentful';
 
 const client = createClient({
   space: process.env.SPACE_ID,
@@ -7,10 +7,10 @@ const client = createClient({
 
 export default async function getContent(slug) {
   const content = await client.getEntries({
-    content_type: "page",
+    content_type: 'page',
     limit: 1,
     include: 10,
-    "fields.slug": slug,
+    'fields.slug': slug,
   });
 
   return content;
