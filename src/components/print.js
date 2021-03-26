@@ -1,5 +1,7 @@
-import React, { useEffect, useRef, useState, forwardRef } from "react";
-import { useReactToPrint } from "react-to-print";
+import React, {
+  useEffect, useRef, useState, forwardRef,
+} from 'react';
+import { useReactToPrint } from 'react-to-print';
 
 const ComponentToPrint = forwardRef(({ element }, ref) => {
   if (!element) {
@@ -9,16 +11,16 @@ const ComponentToPrint = forwardRef(({ element }, ref) => {
   return (
     <div className="d-flex" ref={ref}>
       <div
-        ref={(ref) => {
-          if (ref && element) {
-            while (ref.firstChild) {
-              ref.removeChild(ref.firstChild);
+        ref={(newRef) => {
+          if (newRef && element) {
+            while (newRef.firstChild) {
+              newRef.removeChild(newRef.firstChild);
             }
 
-            ref.appendChild(element);
+            newRef.appendChild(element);
           }
         }}
-      ></div>
+      />
     </div>
   );
 });
@@ -49,7 +51,7 @@ const Print = ({ id }) => {
       >
         Print
       </button>
-      <div style={{ display: "none" }}>
+      <div style={{ display: 'none' }}>
         <ComponentToPrint ref={componentRef} element={element} />
       </div>
     </div>
