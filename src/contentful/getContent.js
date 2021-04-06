@@ -1,4 +1,5 @@
 import { createClient } from 'contentful';
+import formatContent from './formatContent';
 
 const client = createClient({
   space: process.env.SPACE_ID,
@@ -13,5 +14,7 @@ export default async function getContent(slug) {
     'fields.slug': slug,
   });
 
-  return content;
+  const formattedContent = formatContent(content);
+
+  return formattedContent;
 }

@@ -74,7 +74,7 @@ const iterateContent = (content) => {
   return contentArray.flat();
 };
 
-const formatRich = (richContent) => {
+const formatRichText = (richContent) => {
   if (!richContent) {
     return null;
   }
@@ -87,4 +87,4 @@ const formatRich = (richContent) => {
   }
 };
 
-export default formatRich;
+export default formatRichText;
