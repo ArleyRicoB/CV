@@ -1,5 +1,5 @@
 import React, {
-  useEffect, useRef, useState, forwardRef,
+  useRef, forwardRef,
 } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
@@ -10,40 +10,23 @@ const ComponentToPrint = forwardRef(({ element }, ref) => {
 
   return (
     <div className="d-flex" ref={ref}>
-      <div
-        ref={(newRef) => {
-          if (newRef && element) {
-            while (newRef.firstChild) {
-              newRef.removeChild(newRef.firstChild);
-            }
-
-            newRef.appendChild(element);
-          }
-        }}
-      />
+      {element}
     </div>
   );
 });
 
-const Print = ({ id }) => {
-  const [element, setElement] = useState(null);
+const Print = ({ children }) => {
   const componentRef = useRef();
 
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
 
-  useEffect(() => {
-    const node = document.getElementById(id);
-
-    if (node) {
-      const elementToRender = node.cloneNode(true);
-      setElement(elementToRender);
-    }
-  }, []);
-
   return (
-    <div className="bg-gray-200 p-6">
+    <div>
+      <div>
+        <ComponentToPrint ref={componentRef} element={children} />
+      </div>
       <button
         type="button"
         className="bg-gray-500 border border-gray-500 p-2 mb-4"
@@ -51,9 +34,6 @@ const Print = ({ id }) => {
       >
         Print
       </button>
-      <div style={{ display: 'none' }}>
-        <ComponentToPrint ref={componentRef} element={element} />
-      </div>
     </div>
   );
 };
