@@ -1,0 +1,25 @@
+.print-container {
+  padding: 20px 80px 0;
+
+  h3 {
+    font-size: 28px;
+  }
+
+  .profile-item {
+    margin-left: 30px;
+  }
+
+  @include media-breakpoint-down(xxl) {
+    .main-page {
+      [class*='col-sm-8'] {
+        float: left;
+        width: 66%;
+      }
+
+      [class*='col-sm-4'] {
+        float: left;
+        width: 33%;
+      }
+    }
+  }
+}
