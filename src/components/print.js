@@ -9,7 +9,7 @@ const ComponentToPrint = forwardRef(({ element }, ref) => {
   }
 
   return (
-    <div className="d-flex" ref={ref}>
+    <div className="w-100 print-container" ref={ref}>
       <div
         ref={(newRef) => {
           if (newRef && element) {
@@ -43,15 +43,11 @@ const Print = ({ id }) => {
   }, []);
 
   return (
-    <div className="bg-gray-200 p-6">
-      <button
-        type="button"
-        className="bg-gray-500 border border-gray-500 p-2 mb-4"
-        onClick={handlePrint}
-      >
+    <div>
+      <button className="btn btn-outline-primary" type="button" onClick={handlePrint}>
         Print
       </button>
-      <div style={{ display: 'none' }}>
+      <div className="d-none">
         <ComponentToPrint ref={componentRef} element={element} />
       </div>
     </div>
