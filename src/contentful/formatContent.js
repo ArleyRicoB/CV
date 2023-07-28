@@ -1,16 +1,41 @@
 import formatRichText from '../lib/formatRichText';
 
 const formatData = ({ sys, fields }) => {
-  const { identifier, description } = fields;
-  const type = sys?.contentType?.sys?.id || '';
+  const type = sys?.contentType?.sys?.id?.toLowerCase() || '';
 
-  switch (type.toLowerCase()) {
-    case 'section':
-      return { [identifier]: formatRichText(description) };
+  if (type === 'section') {
+    const { identifier, description, employmentItems } = fields;
 
-    default:
-      return null;
+    let employmentItemsFormatted = [];
+    if (employmentItems) {
+      employmentItemsFormatted = employmentItems.map((item) => formatData(item));
+    }
+    return {
+      [identifier]: {
+        description: formatRichText(description),
+        ...(employmentItemsFormatted && { employmentItems: employmentItemsFormatted }),
+      },
+    };
   }
+  if (type === 'employmenthistoryitem') {
+    const {
+      employmentTitle,
+      identifier,
+      from,
+      to,
+      projectsAndDescription,
+    } = fields;
+
+    return {
+      employmentTitle,
+      identifier,
+      from,
+      to,
+      projectsAndDescription: formatRichText(projectsAndDescription),
+    };
+  }
+
+  return null;
 };
 
 const formatPage = (page) => {

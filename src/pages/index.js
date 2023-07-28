@@ -7,17 +7,11 @@ const Print = dynamic(() => import('../components/print'), { ssr: false });
 
 const Main = ({ content }) => {
   const {
-    profile,
-    education,
-    history,
-    skills,
-    languages,
-    details,
-    header,
+    profile, education, skills, languages, details, header, history,
   } = content;
 
   return (
-    <div className="container">
+    <div className="container my-5">
       <section id="cv-container" className="main-page p-0">
         <div className="row">
           <div className="col-12 header">
@@ -25,7 +19,7 @@ const Main = ({ content }) => {
               key="header"
               attributes={{ className: 'header' }}
               tagName="div"
-              content={header[0]}
+              content={header.description[0]}
             />
           </div>
 
@@ -38,7 +32,7 @@ const Main = ({ content }) => {
                     key="information"
                     attributes={{ className: 'information' }}
                     tagName="div"
-                    content={details[0]}
+                    content={details.description[0]}
                   />
                 </div>
                 <div>
@@ -47,7 +41,7 @@ const Main = ({ content }) => {
                     key="skills"
                     attributes={{ className: 'skills' }}
                     tagName="div"
-                    content={skills[0]}
+                    content={skills.description[0]}
                   />
                 </div>
                 <div>
@@ -56,7 +50,7 @@ const Main = ({ content }) => {
                     key="information"
                     attributes={{ className: 'information' }}
                     tagName="div"
-                    content={languages[0]}
+                    content={languages.description[0]}
                   />
                 </div>
               </div>
@@ -67,18 +61,24 @@ const Main = ({ content }) => {
                     key="information"
                     attributes={{ className: 'information' }}
                     tagName="div"
-                    content={profile[0]}
+                    content={profile.description[0]}
                   />
                 </div>
                 <div className="profile-item">
                   <h3>Employment History</h3>
-                  {history?.map((element, index) => (
-                    <Interweave
-                      key={`history-${index}`}
-                      attributes={{ className: 'history' }}
-                      tagName="div"
-                      content={element}
-                    />
+                  {history?.employmentItems.map((element, index) => (
+                    <div key={`history-${index}`}>
+                      <h4 className="text-uppercase font-weight-bold">
+                        {element.employmentTitle}
+                      </h4>
+                      <div>{`${element.from} - ${element.to}`}</div>
+                      <Interweave
+                        key={`history-${index}`}
+                        attributes={{ className: 'history' }}
+                        tagName="div"
+                        content={element.projectsAndDescription[0]}
+                      />
+                    </div>
                   ))}
                 </div>
                 <div className="profile-item">
@@ -87,7 +87,7 @@ const Main = ({ content }) => {
                     key="education"
                     attributes={{ className: 'education' }}
                     tagName="div"
-                    content={education[0]}
+                    content={education.description[0]}
                   />
                 </div>
               </div>
