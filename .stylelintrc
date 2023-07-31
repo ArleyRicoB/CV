@@ -75,7 +75,7 @@
     "selector-pseudo-element-no-unknown": true,
     "selector-type-case": "lower",
     "selector-type-no-unknown": [ true, {
-      ignore: ["custom-elements", "default-namespace"]
+      "ignore": ["custom-elements", "default-namespace"]
     }],
     "selector-max-empty-lines": 0,
     "selector-list-comma-newline-after": "always",

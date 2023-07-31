@@ -1,11 +1,11 @@
-const withFonts = require("nextjs-fonts");
-const path = require("path");
+const path = require('path');
+const withFonts = require('nextjs-fonts');
 
 module.exports = withFonts({
   sassOptions: {
-    includePaths: [path.join(__dirname, "styles")],
+    includePaths: [path.join(__dirname, 'styles')],
   },
-  webpack(config, _options) {
+  webpack(config, _) {
     return config;
   },
 });
